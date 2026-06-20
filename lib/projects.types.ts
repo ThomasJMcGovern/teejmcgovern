@@ -12,7 +12,14 @@ export type Vibe = "os-chrome" | "girly-pop" | "creator";
 export interface ProcessShot {
   /** Public path under /public, e.g. "/assets/graphics/girly-pop.jpg". */
   src: string;
+  /** Long descriptive line (used as the HUD "analysis" text). */
   caption: string;
+  /** Short label, e.g. "POP MUSIC" — used in the file list / HUD filename. */
+  title?: string;
+  /** Optional per-piece year; falls back to the project dateRange. */
+  year?: string;
+  /** Optional cosmetic dimensions readout, e.g. "1080×1350". */
+  dims?: string;
 }
 
 export interface CaseStudy {
@@ -43,7 +50,7 @@ export interface Project {
   dateRange: string;
   openMode: OpenMode;
   vibe: Vibe;
-  /** Canonical standalone route, always "/p/<id>". */
+  /** Canonical standalone route, always "/<id>". */
   route: string;
   caseStudy: CaseStudy;
 }

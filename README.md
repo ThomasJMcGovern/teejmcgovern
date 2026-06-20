@@ -35,17 +35,16 @@ bun run dev          # http://localhost:3000
 ## Structure
 
 ```
-app/                 # routes: / (shell), /p/<id> (vibes), /components (style guide), 404, loading
+app/                 # routes: / (desktop launcher), /<id> (app pages), /components (style guide), 404, loading
 components/
-  os/                # boot, desktop, window, taskbar, takeover, glyph
-  vibes/             # gist-geo, graphics, ask-matthew + scripted chat + router
+  os/                # boot, desktop, taskbar, glyph, app-launch, app-frame
+  vibes/             # gist-geo, graphics (blade-runner terminal), ask-matthew + router
   mobile/            # Y2K springboard
   showcase/          # design-system page sections + primitives
   ui/                # shadcn components
 lib/
-  projects.ts        # the project registry — single source of truth
-  window-manager.ts  # pure, tested windowing state
-hooks/               # use-window-manager, use-is-mobile
+  projects.ts        # the project registry + vibe accents — single source of truth
+hooks/               # use-is-mobile
 e2e/                 # Playwright specs
 docs/superpowers/    # design spec + implementation plan
 public/assets/       # optimized graphics
@@ -53,10 +52,11 @@ public/assets/       # optimized graphics
 
 ## Adding a project
 
-Add one entry to `lib/projects.ts` (id, label, icon, `openMode`, `vibe`, route,
-case study). It automatically appears on the desktop, the mobile springboard, and
-at `/p/<id>`. New visual treatments are added to `components/vibes/` and wired in
-`vibe-router.tsx`.
+Add one entry to `lib/projects.ts` (id, label, icon, `vibe`, `route` = `/<id>`,
+case study). It automatically appears on the desktop launcher and the mobile
+springboard, and clicking it plays the launch transition (`components/os/app-launch.tsx`)
+then opens its own `/<id>` page wrapped in `components/os/app-frame.tsx`. New visual
+treatments are added to `components/vibes/` and wired in `vibe-router.tsx`.
 
 ## Design system
 

@@ -2,8 +2,13 @@
 
 import { DesktopIcon } from "./desktop-icon";
 import { PROJECTS } from "@/lib/projects";
+import type { LaunchOrigin } from "./app-launch";
 
-export function Desktop({ onOpen }: { onOpen: (id: string) => void }) {
+export function Desktop({
+  onOpen,
+}: {
+  onOpen: (id: string, origin: LaunchOrigin) => void;
+}) {
   return (
     <div className="absolute inset-0 overflow-hidden">
       {/* wallpaper */}
@@ -13,7 +18,11 @@ export function Desktop({ onOpen }: { onOpen: (id: string) => void }) {
       {/* icon column */}
       <div className="absolute left-0 top-0 flex flex-col flex-wrap content-start gap-1 p-3">
         {PROJECTS.map((p) => (
-          <DesktopIcon key={p.id} project={p} onOpen={() => onOpen(p.id)} />
+          <DesktopIcon
+            key={p.id}
+            project={p}
+            onOpen={(origin) => onOpen(p.id, origin)}
+          />
         ))}
       </div>
     </div>
