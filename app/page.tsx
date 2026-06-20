@@ -1,5 +1,5 @@
-import { OsShell } from "@/components/os/os-shell";
+import { ShellSwitch } from "@/components/shell-switch";
 
 export default function Home() {
-  return <OsShell />;
+  return <ShellSwitch />;
 }
