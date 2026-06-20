@@ -39,7 +39,7 @@ yarn-error.log*
 
 # local tooling / logs
 /logs
-.claude/settings.local.json
+.claude/
 
 # testing
 /coverage
