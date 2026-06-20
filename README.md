@@ -35,11 +35,12 @@ bun run dev          # http://localhost:3000
 ## Structure
 
 ```
-app/                 # routes: / (shell), /p/<id> (standalone vibes), 404, loading
+app/                 # routes: / (shell), /p/<id> (vibes), /components (style guide), 404, loading
 components/
   os/                # boot, desktop, window, taskbar, takeover, glyph
   vibes/             # gist-geo, graphics, ask-matthew + scripted chat + router
   mobile/            # Y2K springboard
+  showcase/          # design-system page sections + primitives
   ui/                # shadcn components
 lib/
   projects.ts        # the project registry — single source of truth
@@ -56,6 +57,14 @@ Add one entry to `lib/projects.ts` (id, label, icon, `openMode`, `vibe`, route,
 case study). It automatically appears on the desktop, the mobile springboard, and
 at `/p/<id>`. New visual treatments are added to `components/vibes/` and wired in
 `vibe-router.tsx`.
+
+## Design system
+
+`/components` is a living style guide for the designer — every shadcn component
+and design token (colors, typography, radius) in one place, with a page-local
+light/dark toggle. It's intentionally unlinked from the desktop and `noindex`ed.
+To extend it: install a component with the shadcn CLI, then add a block to the
+matching file in `components/showcase/sections/`.
 
 ## Deploy
 
