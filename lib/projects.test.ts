@@ -11,8 +11,8 @@ describe("project registry", () => {
     expect(new Set(PROJECTS.map((p) => p.id)).size).toBe(PROJECTS.length);
   });
 
-  it("each project route matches /p/<id>", () => {
-    for (const p of PROJECTS) expect(p.route).toBe(`/p/${p.id}`);
+  it("each project route matches /<id>", () => {
+    for (const p of PROJECTS) expect(p.route).toBe(`/${p.id}`);
   });
 
   it("each project has a non-empty problem and hero", () => {

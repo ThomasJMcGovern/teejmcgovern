@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getProject } from "@/lib/projects";
 import { renderVibe } from "@/components/vibes/vibe-router";
+import { AppFrame } from "@/components/os/app-frame";
 
-const project = getProject("graphics");
+const project = getProject("gist-geo");
 
 export function generateMetadata(): Metadata {
   if (!project) return {};
@@ -15,5 +16,9 @@ export function generateMetadata(): Metadata {
 
 export default function Page() {
   if (!project) notFound();
-  return <main className="min-h-screen">{renderVibe(project)}</main>;
+  return (
+    <AppFrame project={project}>
+      <div className="min-h-full bg-white">{renderVibe(project)}</div>
+    </AppFrame>
+  );
 }

@@ -1,10 +1,10 @@
-import type { Project } from "./projects.types";
+import type { Project, Vibe } from "./projects.types";
 
 /**
  * The TJ_OS project registry. Each entry powers a desktop icon, a mobile
- * springboard tile, an in-OS window/takeover, and a standalone /p/<id> route.
+ * springboard tile, and its own /<id> app page (opened via a launch transition).
  *
- * Asset paths point at /public/assets/*; real graphics are wired in Task 11.
+ * Asset paths point at /public/assets/*.
  */
 export const PROJECTS: Project[] = [
   {
@@ -16,7 +16,7 @@ export const PROJECTS: Project[] = [
     dateRange: "2025–2026",
     openMode: "takeover",
     vibe: "os-chrome",
-    route: "/p/gist-geo",
+    route: "/gist-geo",
     caseStudy: {
       problem:
         "Brands can't see how they show up inside AI answer engines — ChatGPT, Perplexity, Claude, Gemini. Gist GEO measures that visibility and helps brands improve it.",
@@ -52,22 +52,28 @@ export const PROJECTS: Project[] = [
     dateRange: "2026",
     openMode: "takeover",
     vibe: "girly-pop",
-    route: "/p/graphics",
+    route: "/graphics",
     caseStudy: {
       problem:
         "A burst of Y2K-flavored Photoshop work — posters and portrait edits playing with nostalgia, bubble type, sparkles, and hot-pink gradients.",
       processShots: [
         {
           src: "/assets/graphics/pop-music.jpg",
-          caption: "POP MUSIC — chrome shades + flip-phone, pink gradient oval",
+          title: "POP MUSIC",
+          caption: "Chrome shades + flip-phone over a pink gradient oval.",
+          year: "2026",
         },
         {
           src: "/assets/graphics/digital-circus.jpg",
-          caption: "digital circus — Win98 / MS Paint pixel composition",
+          title: "DIGITAL CIRCUS",
+          caption: "Win98 / MS Paint pixel composition.",
+          year: "2026",
         },
         {
           src: "/assets/graphics/ad.jpg",
-          caption: "Gist GEO meme ad — subway callout marketing",
+          title: "GIST GEO AD",
+          caption: "Subway callout meme — a marketing concept.",
+          year: "2026",
         },
       ],
       hero: "/assets/graphics/girly-pop.jpg",
@@ -84,7 +90,7 @@ export const PROJECTS: Project[] = [
     dateRange: "2025–2026",
     openMode: "window",
     vibe: "creator",
-    route: "/p/ask-matthew",
+    route: "/ask-matthew",
     caseStudy: {
       problem:
         "Replace a static link-in-bio with an interactive, AI-powered creator page — fans can 'ask Matthew anything,' shop, and discover content in one place.",
@@ -108,4 +114,19 @@ export const PROJECTS: Project[] = [
 /** Look up a project by id. Returns undefined when not found. */
 export function getProject(id: string): Project | undefined {
   return PROJECTS.find((p) => p.id === id);
+}
+
+/**
+ * One source of truth for each vibe's accent (icon tile gradient, launch
+ * overlay, and page entrance all share it). `girly-pop` previews the Graphics
+ * page's Blade Runner cyan→magenta.
+ */
+export const VIBE_ACCENT: Record<Vibe, { from: string; to: string }> = {
+  "os-chrome": { from: "#6f7bff", to: "#2a2f8f" },
+  "girly-pop": { from: "#19e3ff", to: "#ff2e88" },
+  creator: { from: "#c6f000", to: "#6e8a00" },
+};
+
+export function vibeAccent(vibe: Vibe) {
+  return VIBE_ACCENT[vibe];
 }

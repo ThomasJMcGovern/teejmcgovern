@@ -1,14 +1,6 @@
 import Link from "next/link";
 import { Glyph } from "@/components/os/glyph";
-import { PROJECTS } from "@/lib/projects";
-import type { Vibe } from "@/lib/projects.types";
-import { cn } from "@/lib/utils";
-
-const VIBE_TILE: Record<Vibe, string> = {
-  "os-chrome": "from-[var(--color-titlebar-2)] to-[var(--color-titlebar-1)]",
-  "girly-pop": "from-[var(--color-hotpink)] to-[#9b2c6f]",
-  creator: "from-[var(--color-acid)] to-[#6e8a00]",
-};
+import { PROJECTS, vibeAccent } from "@/lib/projects";
 
 /** Y2K phone "home screen" — the mobile fallback for the desktop OS. */
 export function Springboard() {
@@ -39,10 +31,10 @@ export function Springboard() {
             className="flex flex-col items-center gap-2 outline-none"
           >
             <span
-              className={cn(
-                "grid h-16 w-16 place-items-center rounded-2xl border-2 border-white/40 bg-gradient-to-b shadow-[3px_4px_0_rgba(0,0,0,0.3)] active:scale-95",
-                VIBE_TILE[p.vibe],
-              )}
+              className="grid h-16 w-16 place-items-center rounded-2xl border-2 border-white/40 shadow-[3px_4px_0_rgba(0,0,0,0.3)] active:scale-95"
+              style={{
+                backgroundImage: `linear-gradient(to bottom, ${vibeAccent(p.vibe).from}, ${vibeAccent(p.vibe).to})`,
+              }}
             >
               <Glyph name={p.icon} className="h-7 w-7 text-white drop-shadow" />
             </span>
