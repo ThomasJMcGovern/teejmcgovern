@@ -18,8 +18,10 @@ export function BootSequence({ onDone }: { onDone: () => void }) {
       "(prefers-reduced-motion: reduce)",
     ).matches;
     if (reduce) {
-      setPct(100);
-      const t = setTimeout(finish, 200);
+      const t = setTimeout(() => {
+        setPct(100);
+        finish();
+      }, 200);
       return () => clearTimeout(t);
     }
     const DURATION = 1800;

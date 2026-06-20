@@ -27,9 +27,14 @@ export function Taskbar({
         hour: "2-digit",
         minute: "2-digit",
       });
-    setTime(fmt());
+    // First paint shows "--:--"; fill on the next frame (async — avoids a
+    // synchronous setState in the effect body) then tick.
+    const raf = requestAnimationFrame(() => setTime(fmt()));
     const i = setInterval(() => setTime(fmt()), 15000);
-    return () => clearInterval(i);
+    return () => {
+      cancelAnimationFrame(raf);
+      clearInterval(i);
+    };
   }, []);
 
   return (
