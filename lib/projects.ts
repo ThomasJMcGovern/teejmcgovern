@@ -58,15 +58,33 @@ export const PROJECTS: Project[] = [
         "A burst of Y2K-flavored Photoshop work — posters and portrait edits playing with nostalgia, bubble type, sparkles, and hot-pink gradients.",
       processShots: [
         {
-          src: "/assets/graphics/pop-music.jpg",
-          title: "POP MUSIC",
-          caption: "Chrome shades + flip-phone over a pink gradient oval.",
+          src: "/assets/graphics/control-issues.jpg",
+          title: "CONTROL ISSUES",
+          caption: "Y2K flame-frame magazine cover — pure punk energy.",
+          year: "2026",
+        },
+        {
+          src: "/assets/graphics/kisses.jpg",
+          title: "GIVE ME KISSES",
+          caption: "Blue star-burst poster — 'give me kisses right now (or else).'",
+          year: "2026",
+        },
+        {
+          src: "/assets/graphics/lorem-ipsum.jpg",
+          title: "LOREM IPSUM",
+          caption: "High-contrast posterized portrait pierced by a red star.",
           year: "2026",
         },
         {
           src: "/assets/graphics/digital-circus.jpg",
           title: "DIGITAL CIRCUS",
           caption: "Win98 / MS Paint pixel composition.",
+          year: "2026",
+        },
+        {
+          src: "/assets/graphics/testing-photoshop.jpg",
+          title: "TESTING PHOTOSHOP",
+          caption: "Graffiti-wall street collage with a neon star burst.",
           year: "2026",
         },
         {
