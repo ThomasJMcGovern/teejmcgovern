@@ -109,6 +109,19 @@ export const PROJECTS: Project[] = [
         "A framework-free creator page with an AI chat front and center, contextual shopping, and learning paths — proof of the 'I build interactive interfaces' thesis. (This window runs a live scripted demo of that chat.)",
     },
   },
+  {
+    id: "profile",
+    label: "Profile",
+    icon: "id-card",
+    role: "About — the operator",
+    tags: ["About", "Prophecy Shell", "Experience"],
+    dateRange: "2026",
+    openMode: "takeover",
+    vibe: "profile",
+    route: "/profile",
+    immersive: true,
+    // No caseStudy — this is an immersive "boot into my OS" experience, not a case study.
+  },
 ];
 
 /** Look up a project by id. Returns undefined when not found. */
@@ -125,6 +138,7 @@ export const VIBE_ACCENT: Record<Vibe, { from: string; to: string }> = {
   "os-chrome": { from: "#6f7bff", to: "#2a2f8f" },
   "girly-pop": { from: "#19e3ff", to: "#ff2e88" },
   creator: { from: "#c6f000", to: "#6e8a00" },
+  profile: { from: "#5dffa0", to: "#1c3a22" },
 };
 
 export function vibeAccent(vibe: Vibe) {

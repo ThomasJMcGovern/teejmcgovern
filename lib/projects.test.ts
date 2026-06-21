@@ -2,11 +2,12 @@ import { describe, it, expect } from "vitest";
 import { PROJECTS, getProject } from "./projects";
 
 describe("project registry", () => {
-  it("has exactly the 3 v1 projects with unique ids", () => {
+  it("has the expected projects with unique ids", () => {
     expect(PROJECTS.map((p) => p.id).sort()).toEqual([
       "ask-matthew",
       "gist-geo",
       "graphics",
+      "profile",
     ]);
     expect(new Set(PROJECTS.map((p) => p.id)).size).toBe(PROJECTS.length);
   });
@@ -15,10 +16,10 @@ describe("project registry", () => {
     for (const p of PROJECTS) expect(p.route).toBe(`/${p.id}`);
   });
 
-  it("each project has a non-empty problem and hero", () => {
-    for (const p of PROJECTS) {
-      expect(p.caseStudy.problem.length).toBeGreaterThan(0);
-      expect(p.caseStudy.hero.length).toBeGreaterThan(0);
+  it("case-study projects have a non-empty problem and hero", () => {
+    for (const p of PROJECTS.filter((x) => x.caseStudy)) {
+      expect(p.caseStudy!.problem.length).toBeGreaterThan(0);
+      expect(p.caseStudy!.hero.length).toBeGreaterThan(0);
     }
   });
 
@@ -30,7 +31,7 @@ describe("project registry", () => {
   it("uses only known open modes and vibes", () => {
     for (const p of PROJECTS) {
       expect(["window", "takeover"]).toContain(p.openMode);
-      expect(["os-chrome", "girly-pop", "creator"]).toContain(p.vibe);
+      expect(["os-chrome", "girly-pop", "creator", "profile"]).toContain(p.vibe);
     }
   });
 });

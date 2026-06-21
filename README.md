@@ -38,7 +38,8 @@ bun run dev          # http://localhost:3000
 app/                 # routes: / (desktop launcher), /<id> (app pages), /components (style guide), 404, loading
 components/
   os/                # boot, desktop, taskbar, glyph, app-launch, app-frame
-  vibes/             # gist-geo, graphics (blade-runner terminal), ask-matthew + router
+  vibes/             # gist-geo, graphics (blade-runner terminal), ask-matthew, profile + router
+  vibes/profile/     # "Prophecy Shell" — immersive boot→OS "about me" experience
   mobile/            # Y2K springboard
   showcase/          # design-system page sections + primitives
   ui/                # shadcn components
@@ -57,6 +58,10 @@ case study). It automatically appears on the desktop launcher and the mobile
 springboard, and clicking it plays the launch transition (`components/os/app-launch.tsx`)
 then opens its own `/<id>` page wrapped in `components/os/app-frame.tsx`. New visual
 treatments are added to `components/vibes/` and wired in `vibe-router.tsx`.
+
+Set `immersive: true` on a project (like **Profile**) to open it full-bleed: the
+desktop skips the launch overlay and the page renders the vibe directly (no
+AppFrame chrome) — for self-contained experiences with their own boot/exit.
 
 ## Design system
 

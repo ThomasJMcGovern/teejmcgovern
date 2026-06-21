@@ -33,11 +33,19 @@ export function OsShell() {
     } catch {}
   }, []);
 
-  const handleOpen = useCallback((id: string, origin: LaunchOrigin | null) => {
-    const project = getProject(id);
-    if (!project) return;
-    setLaunch({ project, origin });
-  }, []);
+  const handleOpen = useCallback(
+    (id: string, origin: LaunchOrigin | null) => {
+      const project = getProject(id);
+      if (!project) return;
+      // Immersive apps open straight into their own full-bleed experience.
+      if (project.immersive) {
+        router.push(project.route);
+        return;
+      }
+      setLaunch({ project, origin });
+    },
+    [router],
+  );
 
   const onLaunchComplete = useCallback(() => {
     setLaunch((l) => {

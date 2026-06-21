@@ -10,7 +10,7 @@ export function generateMetadata(): Metadata {
   if (!project) return {};
   return {
     title: `${project.label.replace(/_/g, " ")} — TJ McGovern`,
-    description: project.caseStudy.problem,
+    description: project.caseStudy?.problem,
   };
 }
 

@@ -7,6 +7,7 @@ import {
   Permanent_Marker,
 } from "next/font/google";
 import "./globals.css";
+import "./profile-shell.css";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
 
