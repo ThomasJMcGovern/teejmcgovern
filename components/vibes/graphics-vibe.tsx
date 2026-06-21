@@ -5,6 +5,7 @@ import type { Project } from "@/lib/projects.types";
 /** "Blade Runner image-analysis terminal" — TJ's graphics archive. */
 export function GraphicsVibe({ project }: { project: Project }) {
   const cs = project.caseStudy;
+  if (!cs) return null;
   const works: Work[] = [
     {
       src: cs.hero,

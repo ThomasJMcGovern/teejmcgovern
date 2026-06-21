@@ -6,6 +6,7 @@ import type { Project } from "@/lib/projects.types";
 /** "os-chrome" vibe — a clean, readable product case study. */
 export function GistGeoVibe({ project }: { project: Project }) {
   const cs = project.caseStudy;
+  if (!cs) return null;
   const title = project.label.replace(/_/g, " ");
   return (
     <article className="mx-auto max-w-3xl px-6 py-8 font-sans text-zinc-800">

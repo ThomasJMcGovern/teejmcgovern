@@ -7,7 +7,7 @@
 export type OpenMode = "window" | "takeover";
 
 /** Visual treatment a project renders in. Each maps to one of TJ's own looks. */
-export type Vibe = "os-chrome" | "girly-pop" | "creator";
+export type Vibe = "os-chrome" | "girly-pop" | "creator" | "profile";
 
 export interface ProcessShot {
   /** Public path under /public, e.g. "/assets/graphics/girly-pop.jpg". */
@@ -52,5 +52,11 @@ export interface Project {
   vibe: Vibe;
   /** Canonical standalone route, always "/<id>". */
   route: string;
-  caseStudy: CaseStudy;
+  /** Optional — experiences (e.g. the Profile shell) aren't case studies. */
+  caseStudy?: CaseStudy;
+  /**
+   * When true, the app opens straight into its own full-bleed experience:
+   * the desktop skips the launch overlay and the page skips the AppFrame chrome.
+   */
+  immersive?: boolean;
 }

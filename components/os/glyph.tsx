@@ -2,6 +2,7 @@ import {
   Globe,
   Image as ImageIcon,
   MessageCircle,
+  IdCard,
   FileQuestion,
   type LucideIcon,
 } from "lucide-react";
@@ -10,6 +11,7 @@ const ICONS: Record<string, LucideIcon> = {
   globe: Globe,
   image: ImageIcon,
   "message-circle": MessageCircle,
+  "id-card": IdCard,
 };
 
 /** Resolves a registry icon name to a lucide icon. */
