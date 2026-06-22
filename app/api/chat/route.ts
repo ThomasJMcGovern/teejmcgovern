@@ -13,10 +13,14 @@ export async function POST(req: Request) {
   });
 
   return result.toUIMessageStreamResponse({
-    // TEMP: surface the real error while debugging the deployed key.
+    // TEMP: dump the full error while debugging the deployed key.
     onError: (error) => {
       console.error("[/api/chat] error:", error);
-      return error instanceof Error ? error.message : String(error);
+      try {
+        return JSON.stringify(error, Object.getOwnPropertyNames(error as object));
+      } catch {
+        return String(error);
+      }
     },
   });
 }
