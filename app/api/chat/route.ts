@@ -13,14 +13,10 @@ export async function POST(req: Request) {
   });
 
   return result.toUIMessageStreamResponse({
-    // TEMP: dump the full error while debugging the deployed key.
+    // Log the real error server-side (Vercel logs); show the client a safe message.
     onError: (error) => {
       console.error("[/api/chat] error:", error);
-      try {
-        return JSON.stringify(error, Object.getOwnPropertyNames(error as object));
-      } catch {
-        return String(error);
-      }
+      return "Sorry — I couldn't reach my brain just now. Try again in a moment.";
     },
   });
 }
