@@ -1,0 +1,42 @@
+/* TJ.AI floating chat widget — keyframes + markdown styling (scoped). */
+@keyframes tj-open {
+  from { opacity: 0.55; transform: translate(-50%, 14px) scale(0.975); }
+  to { opacity: 1; transform: translate(-50%, 0) scale(1); }
+}
+@keyframes tj-spin { to { transform: rotate(360deg); } }
+@keyframes tj-spinrev { to { transform: rotate(-360deg); } }
+@keyframes tj-pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.16); } }
+@keyframes tj-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+@keyframes tj-bars { 0%, 100% { transform: scaleY(0.4); } 50% { transform: scaleY(1); } }
+@keyframes tj-glowpulse {
+  0%, 100% { box-shadow: 0 0 0 1px rgba(62, 240, 138, 0.5), 0 0 22px rgba(62, 240, 138, 0.35); }
+  50% { box-shadow: 0 0 0 1px rgba(62, 240, 138, 0.8), 0 0 34px rgba(62, 240, 138, 0.6); }
+}
+
+.tj-ai-widget input::placeholder { color: rgba(105, 180, 140, 0.55); }
+
+/* MessageResponse (Streamdown markdown) → fit the green theme */
+.tj-ai-widget .tjw-md {
+  color: #dcffe9;
+  font-family: var(--font-rajdhani), sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.tj-ai-widget .tjw-md p { margin: 0 0 8px; }
+.tj-ai-widget .tjw-md p:last-child { margin-bottom: 0; }
+.tj-ai-widget .tjw-md a { color: #6effa6; text-decoration: underline; }
+.tj-ai-widget .tjw-md strong { color: #eafff2; }
+.tj-ai-widget .tjw-md ul,
+.tj-ai-widget .tjw-md ol { margin: 0 0 8px; padding-left: 18px; }
+.tj-ai-widget .tjw-md li { margin: 2px 0; }
+.tj-ai-widget .tjw-md code {
+  font-family: var(--font-share-tech-mono), monospace;
+  background: rgba(62, 240, 138, 0.12);
+  padding: 1px 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tj-ai-widget *,
+  .tj-ai-widget *::before,
+  .tj-ai-widget *::after { animation: none !important; }
+}
